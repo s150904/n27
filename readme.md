@@ -21,3 +21,10 @@ Wir wollen eine Banking-App programmiere, die sich an die N26-Bank anlehnt.
 * Jobangebote anzeigen
 * Impressum anzeigen
 * Geldautomaten in der Nähe zeigen
+
+## Aussehen
+
+### login.html
+* Textfeld für Benutzername
+* Texfeld für das Kennwort
+* Button zum Klicken
