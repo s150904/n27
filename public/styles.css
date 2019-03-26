@@ -11,7 +11,7 @@ input {
   
   button {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: rgb(220, 28, 226);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -23,7 +23,7 @@ input {
   
   .login {
     width: 100%;
-    background-color: rgb(119, 107, 107);
+    background-color: rgb(211, 132, 181);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -36,7 +36,7 @@ input {
   label {    
     font-family: Arial, Helvetica, sans-serif;
     font-size: 6vw;  
-    color: green;
+    color: rgb(128, 0, 75);
   }
   
   div {
@@ -50,7 +50,7 @@ input {
   h1 {
     margin: 0 -601.5rem;  
     padding: .25rem 1.5rem;
-    background:#4CAF50;  
+    background:rgb(194, 62, 174);  
     border-left: 600rem solid rgb(13, 83, 72);
     border-right: 600rem solid rgb(13, 83, 72);
     color: white;
@@ -59,9 +59,21 @@ input {
   }
   
   h2 {  
-    color: #4CAF50;  
+    color: rgb(231, 24, 24);  
     font-size: 6vw; 
     font-family: Arial, Helvetica, sans-serif;
     text-align:center;
   }
   
+  nav {  
+    font-family: Arial, Helvetica, sans-serif;    
+    background-color: rgb(119, 107, 107);    
+    width: 100%;    
+    font-size: 4vw;    
+    text-align:center;  
+    color: white;
+   }
+   a {  
+    color: white;  
+    text-decoration: none;
+   }
