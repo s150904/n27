@@ -68,6 +68,20 @@ app.get('/impressum',(req, res, next) => {
     }
 })
 
+app.get('/kontoAnlegen',(req, res, next) => {   
+
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+        console.log("Kunde ist angemeldet als " + idKunde)
+        res.render('kontoAnlegen.ejs', {                              
+        })
+    }else{
+        res.render('login.ejs', {                    
+        })    
+    }
+})
+
 app.post('/kontoAnlegen',(req, res, next) => {   
 
     let idKunde = req.cookies['istAngemeldetAls']
@@ -82,16 +96,3 @@ app.post('/kontoAnlegen',(req, res, next) => {
     }
 })
 
-app.get('/kontoAnlegen',(req, res, next) => {   
-
-    let idKunde = req.cookies['istAngemeldetAls']
-    
-    if(idKunde){
-        console.log("Kunde ist angemeldet als " + idKunde)
-        res.render('kontoAnlegen.ejs', {                              
-        })
-    }else{
-        res.render('login.ejs', {                    
-        })    
-    }
-})
