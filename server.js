@@ -2,7 +2,6 @@ class Konto{
     constructor(){
         this.Kontonummer
         this.Kontoart
-        this.Kontoname
     }
 }
 
@@ -25,8 +24,7 @@ app.get('/',(req, res, next) => {
     
     if(idKunde){
         console.log("Kunde ist angemeldet als " + idKunde)
-        res.render('index.ejs', {   
-            meldung : ""                           
+        res.render('index.ejs', {                              
         })
     }else{
         res.render('login.ejs', {                    
@@ -83,7 +81,8 @@ app.get('/kontoAnlegen',(req, res, next) => {
     
     if(idKunde){
         console.log("Kunde ist angemeldet als " + idKunde)
-        res.render('kontoAnlegen.ejs', {                              
+        res.render('kontoAnlegen.ejs', { 
+            meldung : ""                             
         })
     }else{
         res.render('login.ejs', {                    
@@ -98,13 +97,12 @@ app.post('/kontoAnlegen',(req, res, next) => {
     if(idKunde){
 
         let konto = new Konto()
-        konto.Kontonummer = req.body.konstonummer
-        konto.Kontoart =rey.body.kontoart
-
+        konto.Kontonummer = req.body.kontonummer
+        konto.Kontoart = req.body.kontoart
 
         console.log("Kunde ist angemeldet als " + idKunde)
-        res.render('kontoAnlegen.ejs', {  
-            meldung : "Das Konto " + konto.Kontonummer + " wurde erfolgreich angelegt."                           
+        res.render('kontoAnlegen.ejs', {                              
+           meldung : "Das Konto " + konto.Kontonummer + " wurde erfolgreich angelegt." 
         })
     }else{
         res.render('login.ejs', {                    
