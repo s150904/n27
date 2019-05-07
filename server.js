@@ -5,6 +5,21 @@ class Konto{
     }
 }
 
+class Kunde{
+    constructor(){
+        this.Name
+        this.Mail
+        this.IdKunde
+        this.Kennwort
+    }
+}
+
+let kunde = new Kunde
+kunde.Name = "Zuki"
+kunde.Mail = "zuki@gmail.com"
+kunde.IdKunde = "4711"
+kunde.Kennwort = "123"
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
