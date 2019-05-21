@@ -11,7 +11,9 @@ class Kunde{
         this.Mail
         this.IdKunde
         this.Kennwort
-    }
+        this.Geburtsdatum
+        this.Adresse
+        this.Telefon    }
 }
 
 let kunde = new Kunde
@@ -125,3 +127,37 @@ app.post('/kontoAnlegen',(req, res, next) => {
     }
 })
 
+app.get('/profilBearbeiten',(req, res, next) => {   
+
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+        console.log("Kunde ist angemeldet als " + idKunde)
+        res.render('kontoAnlegen.ejs', { 
+            meldung : "Das Profil wurde aktualisiert."                             
+        })
+    }else{
+        res.render('login.ejs', {                    
+        })    
+    }
+})
+app.post('/profilBearbeiten',(req, res, next) => {   
+
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+        let kunde = new Kunde()
+        kunde.Name = req.body.kontonummer
+        kunde.Geburtsdatum = req.body.kontoart
+        kunde.Mail = req.body.kontoart
+        kunde.Telefon = req.body.kontoart
+
+        console.log("Kunde ist angemeldet als " + idKunde)
+        res.render('profilBearbeiten.ejs', {                              
+           meldung : "Das Profil wurde aktualisiert." 
+        })
+    }else{
+        res.render('login.ejs', {                    
+        })    
+    }
+})
