@@ -24,7 +24,7 @@
     </nav>
     <form method="POST" action="/kontoAnlegen">          
         <label>Kontonummer:</label>          
-        <input type="number" name="kontonummer">
+        <input type="number" name="kontonummer" type="text" minlength="10" maxlength="10" require>
         <label>Kontoart:</label>          
         <input type="text" name="kontoart">          
         <button>Konto anlegen</button>
