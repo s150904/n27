@@ -1,31 +1,38 @@
 // Klassendefinition
 
+class Konto{
+    constructor(){
+        this.Kontonummer
+        this.Kontoart
+    }
+}
+
 class Kunde{
     constructor(){
-        this.Name
         this.Mail
-        this.IdKunde
+        this.Name
         this.Kennwort
+        this.IdKunde
         this.Geburtsdatum
         this.Adresse
-        this.Telefon    }
+        this.Telefon
+    }
 }
 
 // Deklaration und Instanziierung
 
-let kunde = new Kunde
+let kunde = new Kunde()
 
-// Initalisierung
+// Initialisierung
 
-kunde.Name = "Zuki"
 kunde.Mail = "zuki@gmail.com"
-kunde.IdKunde = "4711"
+kunde.Name = "Zuki"
 kunde.Kennwort = "123"
-
+kunde.IdKunde = 4711
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const iban = require ('iban')
+const iban = require('iban')
 const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -36,7 +43,8 @@ const server = app.listen(process.env.PORT || 3000, () => {
     console.log('Server lauscht auf Port %s', server.address().port)    
 })
 
-// Beim Aufrufen der Startsseite wird die app.get('/'...) abgearbeitet.
+// Beim Aufrufen der Startseite wird die 
+// app.get('/' ...) abgearbeitet.
 
 app.get('/',(req, res, next) => {   
 
@@ -63,21 +71,28 @@ app.get('/login',(req, res, next) => {
     })
 })
 
-// app.post() wird abgearbeitet, wenn der Nutton gedrückt wird.
+// app.post() wird abgearbeitet, wenn der 
+// Button gedrückt wird.
 
 app.post('/',(req, res, next) => {   
 
-    // Der Wert aus dem Input mit dem
-    // name = 'idKunde' wird über die Anfrage(req) an den Server gesendet und zugewiesen an eine Konstante namens idKunde
+    // Der Wert aus dem Input mit dem 
+    // name = 'idKunde' wird über die
+    // Anfrage (req) an den Server gesendet und
+    // zugewiesen an eine Konstante namens
+    // idKunde.
 
     const idKunde = req.body.idKunde
     const kennwort = req.body.kennwort
 
-    // Wenn der Wwrt von idKunde gleich dem Wert der Eigenschaft IdKunde von Kunde ist UND 
-    // wenn der Wert von Kennwort gleich dem Wert der Eigenschaft Kennwort von Kunde ist, dann werden die Anweisungen im
-    // Rumpf der if-Kontrollstruktur ausgeführt.
+    // Wenn der Wert von idKunde gleich dem Wert der
+    // Eigenschaft IdKunde von kunde ist UND
+    // wenn der Wert von kennwort gleich dem Wert der
+    // Eigenschaft Kennwort von kunde ist, dann
+    // werden die Anweisungen im Rumpf der 
+    // if-Kontrollstruktur ausgeführt.
 
-    if(idKunde ==="4711" && kennwort =="123"){
+    if(idKunde == kunde.IdKunde && kennwort == kunde.Kennwort){
         console.log("Der Cookie wird gesetzt")
         res.cookie('istAngemeldetAls','idKunde')
         res.render('index.ejs', {                    
@@ -128,14 +143,16 @@ app.post('/kontoAnlegen',(req, res, next) => {
         let konto = new Konto()
         konto.Kontonummer = req.body.kontonummer
         konto.Kontoart = req.body.kontoart
+
         const bankleitzahl = "27000000"
         const laenderkennung = "DE"
+
         let errechneteIban = iban.fromBBAN(laenderkennung, bankleitzahl + " " + req.body.kontonummer)
         console.log(errechneteIban)
-        
+
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('kontoAnlegen.ejs', {                              
-           meldung : "Das Konto " + konto.Kontonummer + " wurde erfolgreich angelegt." 
+           meldung : "Das Konto mit der IBAN " + errechneteIban + " wurde erfolgreich angelegt." 
         })
     }else{
         res.render('login.ejs', {                    
@@ -149,30 +166,35 @@ app.get('/profilBearbeiten',(req, res, next) => {
     
     if(idKunde){
         console.log("Kunde ist angemeldet als " + idKunde)
-        res.render('kontoAnlegen.ejs', { 
-            meldung : "Das Profil wurde aktualisiert."                             
+        
+        // ... dann wird kontoAnlegen.ejs gerendert.
+        
+        res.render('profilBearbeiten.ejs', {    
+            meldung : ""                          
         })
     }else{
         res.render('login.ejs', {                    
         })    
     }
 })
+
 app.post('/profilBearbeiten',(req, res, next) => {   
 
     let idKunde = req.cookies['istAngemeldetAls']
     
     if(idKunde){
-        let kunde = new Kunde()
-        kunde.Name = req.body.kontonummer
-        kunde.Geburtsdatum = req.body.kontoart
-        kunde.Mail = req.body.kontoart
-        kunde.Telefon = req.body.kontoart
-
         console.log("Kunde ist angemeldet als " + idKunde)
+        
+        kunde.Nachname = req.body.nachname
+        kunde.Kennwort = req.body.kennwort
+        
         res.render('profilBearbeiten.ejs', {                              
-           meldung : "Das Profil wurde aktualisiert." 
+            meldung : "Die Stammdaten wurden geändert."
         })
     }else{
+        // Die login.ejs wird gerendert 
+        // und als Response
+        // an den Browser übergeben.
         res.render('login.ejs', {                    
         })    
     }

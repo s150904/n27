@@ -9,18 +9,19 @@ const server = app.listen(process.env.PORT || 3000, () => {
     console.log('Server lauscht auf Port %s', server.address().port)    
 })
 
-// Eine Klasse ist ein Bauplan.
-// Ein Objekt ist die konkrete Umsetzung auf der Grundlage des Bauplans. 
-// Alle Objekte eines Bauplans haben dieselben Eigenschaften, aber möglicherweise unterschiedliche Eigenschaftswerte.
+// Eine Klasse ist Bauplan. 
+// Ein Objekt ist die konkrete Umsetzung auf der Grundlage des Bauplans.
+// Alle Objekte eines Bauplans haben dieselben Eigenschaften, aber
+// möglicherweise unterschiedliche Eigenschaftswerte.
 
-// Klassendefinition
-//******************
+// Klassendefinition 
+// =================
 
 class Rechteck{
-    constructor(){
-        this.laenge
-        this.breite
-    }
+   constructor(){
+       this.laenge
+       this.breite
+   } 
 }
 
 class Schueler{
@@ -31,20 +32,11 @@ class Schueler{
     }
 }
 
-class Spieler{
+class Fussballer{
     constructor(){
         this.name
-        this.alter
-        this.verein
-        this.nummer
-    }
-}
-
-class Pullover{
-    constructor(){
-        this.stoff
-        this.farbe
-        this.marke
+        this.nationalitaet
+        this.nummer 
     }
 }
 
@@ -56,9 +48,10 @@ class Pullover{
 // Instanziierung erkennt man am reservierten Wort "new".
 // Instanziierung reserviert Speicherzellen für das soeben deklarierte Objekt.
 
-// ...= new Rechteck()
+// ... = new Rechteck()
 
-// Initialisierung belegt die reservierten Speicherzellen mit konkreten Eigenschaftswerrten.
+// Initialisierung belegt die reservierten Speicherzellen mit konkreten
+// Eigenschaftswerten.
 
 // rechteck.breite = 3
 
@@ -67,41 +60,33 @@ rechteck.breite = 3
 rechteck.laenge = 2
 
 console.log("Breite : " + rechteck.breite)
-console.log("Länge : " + rechteck.laenge)
+console.log("Länge :  " + rechteck.laenge)
 console.log(rechteck)
 
 let schueler = new Schueler()
 schueler.geschlecht = "w"
-schueler.vorname = "Ronja"
-schueler.alter = 17
+schueler.vorname = "Petra"
+schueler.alter = 16
 
-let spieler = new Spieler()
-spieler.name = "Mario Götze"
-spieler.alter = 26
-spieler.verein = "Borussia Dortmund"
-spieler.nummer = 10
+let fussballer = new Fussballer()
+fussballer.name = "Fred"
+fussballer.nationalitaet = "D"
+fussballer.nummer = 10
 
-let pullover = new Pullover()
-pullover.stoff = "Baumwolle"
-pullover.farbe = "rosa"
-pullover.marke = "nike"
+// Wenn localhost:3000/klasse-objekt-ejs-trainieren aufgerufen wird ...
 
 app.get('/klasse-objekt-ejs-trainieren',(req, res, next) => {   
 
     // ... wird klasse-objekt-ejs-trainieren.ejs gerendert:
 
     res.render('klasse-objekt-ejs-trainieren', {
-        breite : rechteck.breite,
-        laenge : rechteck.laenge,
-        geschlecht : schueler.geschlecht,
-        vorname : schueler.vorname,
-        alter : schueler.alter,
-        name : spieler.name,
-        alter : spieler.alter,
-        verein : spieler.verein,
-        nummer : spieler.nummer,
-        stoff : pullover.stoff,
-        farbe : pullover.farbe,
-        marke : pullover.marke                          
+       breite : rechteck.breite,
+       laenge : rechteck.laenge,
+       geschlecht : schueler.geschlecht,
+       vorname : schueler.vorname,
+       alter : schueler.alter,
+       name : fussballer.name,
+       nationalitaet : fussballer.nationalitaet,
+       nummer : fussballer.nummer
     })
 })
