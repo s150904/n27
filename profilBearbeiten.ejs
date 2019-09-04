@@ -20,13 +20,17 @@
       <a href="/"><i class="fa fa-home" aria-hidden="true"></i></a>                        
       <a href="/login">Logout</a>        
       <a href="/impressum">Impressum</a>   
-      <a href="mailto:stefan.baeumer@berufskolleg-borken.de"> <i class="fa fa-envelope-o"></i></a>
+     <a href="mailto:stefan.baeumer@berufskolleg-borken.de"> <i class="fa fa-envelope-o"></i></a>
     </nav>
     <form method="POST" action="/profilBearbeiten">          
-        <label>Kontonummer:</label>          
-        <input type="text" name="name">
-        <label>Kontoart:</label>          
-        <input type="number" name="geburtsdatum">          
+        <label>Telefonnummer:</label>          
+        <input type="text" name="telefonnummer">
+        <label>Adresse:</label>          
+        <input type="text" name="adresse">
+        <label>Mail:</label>          
+        <input type="mail" name="mail">
+        <label>Kennwort:</label>          
+        <input type="password" name="kennwort">          
         <button>Konto anlegen</button>
     </form>  
     <%= meldung %>

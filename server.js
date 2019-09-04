@@ -10,12 +10,12 @@ class Konto{
 class Kunde{
     constructor(){
         this.Mail
-        this.Name
+        this.Nachname
         this.Kennwort
         this.IdKunde
         this.Geburtsdatum
         this.Adresse
-        this.Telefon
+        this.Telefonnummer
     }
 }
 
@@ -185,7 +185,10 @@ app.post('/profilBearbeiten',(req, res, next) => {
     if(idKunde){
         console.log("Kunde ist angemeldet als " + idKunde)
         
-        kunde.Nachname = req.body.nachname
+        kunde.Telefonnummer = req.body.telefonnummer
+        kunde.Adresse = req.body.adresse
+        kunde.Mail = req.body.mail
+        kunde.Nachname = "Fraune"
         kunde.Kennwort = req.body.kennwort
         
         res.render('profilBearbeiten.ejs', {                              
