@@ -1,4 +1,7 @@
-// Klassendefinition
+// Klassendefinition. Die Klasse ist der Bauplan,
+// der alle relevanten Eigenschaften enthalten.
+// Nach der Deklaration wird mit dem reservierten Wort
+// 'new' ein Objekt der Klasse instanziiert.
 
 class Konto{
     constructor(){
@@ -32,7 +35,7 @@ kunde.IdKunde = 4711
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const mysql = require ('mysql')
+const mysql = require('mysql')
 const iban = require('iban')
 const app = express()
 app.set('view engine', 'ejs')
@@ -46,30 +49,13 @@ const dbVerbindung = mysql.createConnection({
     database: "dbn27",
     user: "placematman",
     password: "BKB123456!"
-
 })
 
 dbVerbindung.connect()
 
-// Die Kontrolltabelle wird angelegt.
-
-dbVerbindung.connect(function(err){
-
-    dbVerbindung.query("CREATE TABLE IF NOT EXISTS konto(iban VARCHAR(22), anfangssaldo FLOAT, kontoart VARCHAR(20), timestamp TIMESTAMP, PRIMARY KEY(iban));", function(err, result){
-        if(err){
-            console.log("Es ist ein Fehler aufgetreten: " + err)
-        }else{
-             console.log("Tabelle erstellt bzw. schon existent.")
-        }
-    })
-}) 
-    
-    const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
     console.log('Server lauscht auf Port %s', server.address().port)    
-    dbVerbindung.connect(function(err){
-        })
-    })
-
+})
 
 // Beim Aufrufen der Startseite wird die 
 // app.get('/' ...) abgearbeitet.
@@ -168,7 +154,13 @@ app.post('/kontoAnlegen',(req, res, next) => {
     
     if(idKunde){
 
+        // Von der Klasse Konto wird ein Objekt namens konto instanziiert.
+
         let konto = new Konto()
+
+        // Nach der Deklaration und der Instanziierung kommt die Initalisierung.
+        //Das heißt, dass konkrete Eigenschaftswerte dem Objekt zugewiesen werden.
+        
         konto.Kontonummer = req.body.kontonummer
         konto.Kontoart = req.body.kontoart
 
@@ -179,20 +171,9 @@ app.post('/kontoAnlegen',(req, res, next) => {
         console.log(errechneteIban)
 
         // Einfügen von kontonummer in die Tabelle konto (SQL)
+       
+       
 
-        dbVerbindung.connect(function(err){
-
-            dbVerbindung.query("INSERT INTO konto(iban,anfangssaldo,kontoart,timestamp);", function(err, result){
-                if(err){
-                    console.log("Es ist ein Fehler aufgetreten: " + err)
-                }else{
-                     console.log("Tabelle erstellt bzw. schon existent.")
-                }
-            })
-        }) 
-
-        dbVerbindung.query("INSERT INTO konto(kontonummer)VALUES (123)")
-        
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('kontoAnlegen.ejs', {                              
            meldung : "Das Konto mit der IBAN " + errechneteIban + " wurde erfolgreich angelegt." 
@@ -277,12 +258,12 @@ app.post('/ueberweisen',(req, res, next) => {
 
         let zielkontonummer = req.body.zielkontonummer
         let betrag = req.body.betrag
-        
-        // ToDo: Saldo um den Betrag reduzieren.
-        // ToDo: Betrag beim Zielkonto gutschreiben.
+
+        //ToDo: Saldo um den Betrag reduzieren.
+        //ToDo: Betrag beim Zielkonto gutschreiben.
 
         // Umsetzung mit einer gemeinsamen relationalen Datenbank.
-        
+
         res.render('ueberweisen.ejs', {                              
             meldung : "Die Überweisung wurde erfolgreich ausgeführt."
         })

@@ -11,7 +11,7 @@ input {
 
 button {
   width: 100%;
-  background-color: rgb(236, 28, 174);
+  background-color: rgb(219, 138, 208);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -23,7 +23,7 @@ button {
 
 .login {
   width: 100%;
-  background-color: rgb(243, 190, 232);
+  background-color: rgb(207, 157, 219);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -36,7 +36,7 @@ button {
 label {    
   font-family: Arial, Helvetica, sans-serif;
   font-size: 6vw;  
-  color: rgb(214, 130, 165);
+  color: rgb(189, 124, 167);
 }
 
 div {
@@ -50,16 +50,16 @@ div {
 h1 {
   margin: 0 -601.5rem;  
   padding: .25rem 1.5rem;
-  background:rgb(247, 145, 204);  
-  border-left: 600rem solid rgb(153, 231, 220);
-  border-right: 600rem solid rgb(134, 201, 191);
+  background:rgb(194, 125, 179);  
+  border-left: 600rem solid rgb(192, 100, 184);
+  border-right: 600rem solid rgb(194, 134, 189);
   color: white;
   font-size: 8vw; 
   font-family: Arial, Helvetica, sans-serif;
 }
 
 h2 {  
-  color: rgb(214, 142, 202);  
+  color: rgb(212, 129, 199);  
   font-size: 6vw; 
   font-family: Arial, Helvetica, sans-serif;
   text-align:center;
@@ -67,14 +67,14 @@ h2 {
   
 nav {  
   font-family: Arial, Helvetica, sans-serif;    
-  background-color: rgb(119, 107, 107);        
+  background-color: rgb(218, 137, 207);        
   font-size: 4vw;    
   text-align:center;  
   color: white;
   margin: 0 -601.5rem;  
   padding: .25rem 1.5rem;
-  border-left: 600rem solid #f0a2d8;
-  border-right: 600rem solid rgb(236, 147, 207);
+  border-left: 600rem solid rgb(194, 129, 191);
+  border-right: 600rem solid rgb(173, 110, 168);
 }
   
 a {  
